@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import { AlertCircle, CheckCircle, TrendingUp, FileText, Users, BookOpen, Calendar, Clock, Eye, Plus } from 'lucide-react';
+import { AlertCircle, CheckCircle, TrendingUp, FileText, Users, BookOpen, Calendar, Clock, Plus } from 'lucide-react';
 
 interface AdminTest {
   id: string;
@@ -54,28 +53,39 @@ export function DashboardView() {
   return (
     <main className="flex-1 overflow-y-auto bg-slate-50">
       <div className="p-8 max-w-7xl mx-auto">
-        {/* View Toggle */}
-        <div className="flex items-center justify-between mb-8">
-          <div />
-          <div className="flex items-center gap-2 bg-white p-1 rounded-lg border border-slate-200 shadow-sm">
-            <ToggleGroup type="single" value={viewMode} onValueChange={(val) => val && setViewMode(val as 'admin' | 'student')}>
-              <ToggleGroupItem value="admin" className="data-[state=on]:bg-blue-950 data-[state=on]:text-white data-[state=off]:text-slate-700 data-[state=on]:shadow-sm font-medium">
-                Visão do Administrador
-              </ToggleGroupItem>
-              <ToggleGroupItem value="student" className="data-[state=on]:bg-blue-950 data-[state=on]:text-white data-[state=off]:text-slate-700 data-[state=on]:shadow-sm font-medium">
-                Visão do Avaliado
-              </ToggleGroupItem>
-            </ToggleGroup>
-          </div>
-        </div>
 
         {/* Admin View */}
         {viewMode === 'admin' && (
           <>
-            {/* Admin Welcome Header */}
-            <div className="mb-10">
-              <h1 className="text-4xl font-bold text-blue-950">Olá! Aqui está o seu resumo de administração.</h1>
-              <p className="text-slate-600 mt-3 text-base">Gerencie suas provas, grupos e monitore o desempenho dos alunos</p>
+            {/* Admin Welcome Header with Modern Toggle */}
+            <div className="mb-10 flex items-start justify-between">
+              <div className="flex-1">
+                <h1 className="text-4xl font-bold text-blue-950">Olá! Aqui está o seu resumo de administração.</h1>
+                <p className="text-slate-600 mt-3 text-base">Gerencie suas provas, grupos e monitore o desempenho dos alunos</p>
+              </div>
+              {/* Modern Toggle */}
+              <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-full ml-8 flex-shrink-0">
+                <button
+                  onClick={() => setViewMode('admin')}
+                  className="px-4 py-2 rounded-full font-medium text-sm transition-all duration-200"
+                  style={{
+                    backgroundColor: viewMode === 'admin' ? '#001f3f' : 'transparent',
+                    color: viewMode === 'admin' ? 'white' : '#475569',
+                  }}
+                >
+                  Admin
+                </button>
+                <button
+                  onClick={() => setViewMode('student')}
+                  className="px-4 py-2 rounded-full font-medium text-sm transition-all duration-200"
+                  style={{
+                    backgroundColor: viewMode === 'student' ? '#001f3f' : 'transparent',
+                    color: viewMode === 'student' ? 'white' : '#475569',
+                  }}
+                >
+                  Aluno
+                </button>
+              </div>
             </div>
 
             {/* Admin Metric Cards */}
@@ -186,10 +196,35 @@ export function DashboardView() {
         {/* Student View */}
         {viewMode === 'student' && (
           <>
-            {/* Student Welcome Header */}
-            <div className="mb-10">
-              <h1 className="text-4xl font-bold text-blue-950">Olá! Preparado para as suas avaliações?</h1>
-              <p className="text-slate-600 mt-3 text-base">Verifique suas provas pendentes e resultados recentes</p>
+            {/* Student Welcome Header with Modern Toggle */}
+            <div className="mb-10 flex items-start justify-between">
+              <div className="flex-1">
+                <h1 className="text-4xl font-bold text-blue-950">Olá! Preparado para as suas avaliações?</h1>
+                <p className="text-slate-600 mt-3 text-base">Verifique suas provas pendentes e resultados recentes</p>
+              </div>
+              {/* Modern Toggle */}
+              <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-full ml-8 flex-shrink-0">
+                <button
+                  onClick={() => setViewMode('admin')}
+                  className="px-4 py-2 rounded-full font-medium text-sm transition-all duration-200"
+                  style={{
+                    backgroundColor: viewMode === 'admin' ? '#001f3f' : 'transparent',
+                    color: viewMode === 'admin' ? 'white' : '#475569',
+                  }}
+                >
+                  Admin
+                </button>
+                <button
+                  onClick={() => setViewMode('student')}
+                  className="px-4 py-2 rounded-full font-medium text-sm transition-all duration-200"
+                  style={{
+                    backgroundColor: viewMode === 'student' ? '#001f3f' : 'transparent',
+                    color: viewMode === 'student' ? 'white' : '#475569',
+                  }}
+                >
+                  Aluno
+                </button>
+              </div>
             </div>
 
             {/* Student Metric Cards */}
