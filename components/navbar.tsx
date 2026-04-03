@@ -1,7 +1,6 @@
 'use client';
 
 import { Bell, User } from 'lucide-react';
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -10,46 +9,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Switch } from '@/components/ui/switch';
 
 interface NavbarProps {
   currentPage?: 'dashboard' | 'banco-questoes';
 }
 
 export function Navbar({ currentPage = 'dashboard' }: NavbarProps) {
-  const [mode, setMode] = useState<'admin' | 'student'>('student');
-
   return (
     <header className="h-16 bg-white border-b border-border sticky top-0 z-40 flex items-center">
       <div className="flex-1 px-8 flex items-center justify-between">
-        {/* Mode Toggle with Labels - Only visible on dashboard */}
-        {currentPage === 'dashboard' && (
-          <div className="flex items-center gap-4 px-6 py-3 bg-muted rounded-lg">
-            <span
-              className={`text-sm transition-all ${
-                mode === 'student'
-                  ? 'font-bold text-foreground'
-                  : 'font-normal text-muted-foreground'
-              }`}
-            >
-              Visão do Avaliado
-            </span>
-            <Switch
-              checked={mode === 'admin'}
-              onCheckedChange={(checked) => setMode(checked ? 'admin' : 'student')}
-            />
-            <span
-              className={`text-sm transition-all ${
-                mode === 'admin'
-                  ? 'font-bold text-foreground'
-                  : 'font-normal text-muted-foreground'
-              }`}
-            >
-              Visão do Administrador
-            </span>
-          </div>
-        )}
-
         {/* Right Side Controls */}
         <div className="flex items-center gap-6 ml-auto">
           {/* Notification Bell */}

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { AlertCircle, CheckCircle, TrendingUp, FileText, Users, BookOpen, Calendar, Clock, Plus } from 'lucide-react';
+import { AlertCircle, CheckCircle, TrendingUp, FileText, Calendar, Clock, Plus } from 'lucide-react';
 
 interface AdminTest {
   id: string;
@@ -73,7 +73,7 @@ export function DashboardView() {
                     color: viewMode === 'admin' ? 'white' : '#475569',
                   }}
                 >
-                  Admin
+                  Visão do Administrador
                 </button>
                 <button
                   onClick={() => setViewMode('student')}
@@ -83,7 +83,7 @@ export function DashboardView() {
                     color: viewMode === 'student' ? 'white' : '#475569',
                   }}
                 >
-                  Aluno
+                  Visão do Avaliado
                 </button>
               </div>
             </div>
@@ -212,7 +212,7 @@ export function DashboardView() {
                     color: viewMode === 'admin' ? 'white' : '#475569',
                   }}
                 >
-                  Admin
+                  Visão do Administrador
                 </button>
                 <button
                   onClick={() => setViewMode('student')}
@@ -222,7 +222,7 @@ export function DashboardView() {
                     color: viewMode === 'student' ? 'white' : '#475569',
                   }}
                 >
-                  Aluno
+                  Visão do Avaliado
                 </button>
               </div>
             </div>
