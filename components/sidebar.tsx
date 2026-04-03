@@ -6,7 +6,8 @@ import {
   BookOpen,
   LayoutTemplate,
   FileText,
-  BarChart3,
+  Mail,
+  Settings,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -30,7 +31,7 @@ const navItems: NavItem[] = [
     icon: <LayoutTemplate className="w-5 h-5" />,
   },
   { id: 'provas', name: 'Provas', icon: <FileText className="w-5 h-5" /> },
-  { id: 'relatorios', name: 'Relatórios', icon: <BarChart3 className="w-5 h-5" /> },
+  { id: 'caixa-entrada', name: 'Caixa de Entrada', icon: <Mail className="w-5 h-5" /> },
 ];
 
 interface SidebarProps {
@@ -39,7 +40,7 @@ interface SidebarProps {
 
 export function Sidebar({ onNavigate }: SidebarProps) {
   const handleNavClick = (pageId: string) => {
-    if (['banco-questoes', 'modelos', 'provas', 'relatorios'].includes(pageId)) {
+    if (['banco-questoes', 'modelos', 'provas', 'grupos', 'caixa-entrada'].includes(pageId)) {
       onNavigate?.(pageId);
     } else {
       onNavigate?.('dashboard');
@@ -77,6 +78,17 @@ export function Sidebar({ onNavigate }: SidebarProps) {
           ))}
         </ul>
       </nav>
+
+      {/* Settings Button at Bottom */}
+      <div className="p-4 border-t border-sidebar-border">
+        <button className={cn(
+          'w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 text-left',
+          'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
+        )}>
+          <Settings className="w-5 h-5" />
+          <span>Configurações</span>
+        </button>
+      </div>
 
       {/* Footer */}
       <div className="p-4 border-t border-sidebar-border text-xs text-sidebar-foreground/60">

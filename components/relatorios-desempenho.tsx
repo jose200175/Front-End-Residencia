@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Download, BarChart3, LineChart } from 'lucide-react';
+import { Download, BarChart3, LineChart, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -74,7 +74,7 @@ const mockStudents: AuditStudent[] = [
   },
 ];
 
-export function RelatoriosDesempenho() {
+export function RelatoriosDesempenho({ testData, onBack }: { testData?: any; onBack?: () => void }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -93,6 +93,17 @@ export function RelatoriosDesempenho() {
   return (
     <main className="flex-1 overflow-y-auto">
       <div className="p-8 bg-slate-50 min-h-screen">
+        {/* Back Button */}
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="flex items-center gap-2 text-blue-950 hover:text-blue-900 font-medium mb-6 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Voltar para Provas
+          </button>
+        )}
+
         {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <div>
