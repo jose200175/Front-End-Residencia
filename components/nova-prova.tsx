@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Plus, BookTemplate, Eye } from 'lucide-react';
+import { Plus, BookTemplate, Eye, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -25,7 +25,7 @@ interface Rule {
   bncc: string;
 }
 
-export function NovaProva() {
+export function NovaProva({ onBack }: { onBack?: () => void }) {
   const [title, setTitle] = useState('');
   const [targetGroup, setTargetGroup] = useState('');
   const [date, setDate] = useState('');
@@ -78,6 +78,17 @@ export function NovaProva() {
   return (
     <main className="flex-1 overflow-y-auto">
       <div className="p-8 pb-32">
+        {/* Back Button */}
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="flex items-center gap-2 text-blue-950 hover:text-blue-900 font-medium mb-6 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Voltar
+          </button>
+        )}
+
         {/* Page Header */}
         <div className="mb-8 flex items-center justify-between">
           <div>

@@ -47,7 +47,7 @@ const studentResults: StudentResult[] = [
   { id: '3', testName: 'Avaliação de Português', score: 9.0, date: '2025-03-25' },
 ];
 
-export function DashboardView() {
+export function DashboardView({ onCreateTest }: { onCreateTest?: () => void }) {
   const [viewMode, setViewMode] = useState<'admin' | 'student'>('admin');
 
   return (
@@ -173,7 +173,10 @@ export function DashboardView() {
                   </CardHeader>
                   <CardContent className="pt-6">
                     <div className="space-y-3 flex flex-col">
-                      <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white gap-2 font-semibold py-6 text-base rounded-lg transition-colors">
+                      <Button
+                        onClick={onCreateTest}
+                        className="w-full bg-emerald-600 hover:bg-emerald-700 text-white gap-2 font-semibold py-6 text-base rounded-lg transition-colors"
+                      >
                         <Plus className="w-5 h-5" />
                         Criar Nova Prova
                       </Button>

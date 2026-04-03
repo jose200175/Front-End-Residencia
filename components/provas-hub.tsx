@@ -67,9 +67,10 @@ const mockProvas: ProvaData[] = [
 
 interface ProvasHubProps {
   onViewReport?: (testData: ProvaData) => void;
+  onCreateTest?: () => void;
 }
 
-export function ProvasHub({ onViewReport }: ProvasHubProps) {
+export function ProvasHub({ onViewReport, onCreateTest }: ProvasHubProps) {
   const [activeTab, setActiveTab] = useState<'admin' | 'student'>('admin');
   const [grau, setGrau] = useState('todos');
   const [disciplina, setDisciplina] = useState('todos');
@@ -107,7 +108,10 @@ export function ProvasHub({ onViewReport }: ProvasHubProps) {
             <h1 className="text-4xl font-bold text-blue-950">Minhas Provas</h1>
             <p className="text-slate-600 mt-2">Gerencie e acompanhe suas provas</p>
           </div>
-          <Button className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2 font-semibold px-6 py-6 text-base rounded-lg">
+          <Button 
+            onClick={onCreateTest}
+            className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2 font-semibold px-6 py-6 text-base rounded-lg"
+          >
             <Plus className="w-5 h-5" />
             Nova Prova
           </Button>
